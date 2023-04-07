@@ -19,10 +19,14 @@ def dfs(graph, start, visited=None):
             visited.append(i)
             dfs(graph, i, visited)
         return visited
-top = {i: list(dfs(graph, i))[:-1] for i in range(N)}
-a = list(top.keys())
-for i in range(len(a)):
-    for j in range(i+1, len(a)):
-        if len(top[a[i]]) < len(top[a[j]]):
-            a[i], a[j] = a[j], a[i]
-print(*a)
+    
+try:
+    top = {i: list(dfs(graph, i))[:-1] for i in range(N)}
+    a = list(top.keys())
+    for i in range(len(a)):
+        for j in range(i+1, len(a)):
+            if len(top[a[i]]) < len(top[a[j]]):
+                a[i], a[j] = a[j], a[i]
+    print(a, top, sep='\n')
+except:
+    print('NO')
