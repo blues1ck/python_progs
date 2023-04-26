@@ -1,3 +1,4 @@
-g = 'vghyfhmeo'
-g = g [2:-2]
-print(g)
+k = [0, 1]
+a = 1
+if a in k:
+    print('cbnehj')
