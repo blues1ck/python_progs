@@ -4,3 +4,4 @@ for i in a:
         b = a.index(i)
         break
 print(b)
+

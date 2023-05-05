@@ -33,6 +33,7 @@ with open('INPUT.TXT', 'r') as f:
         graph[v].append(u)
 
 
+
 # Функция минимакса
 def minimax(node, depth, is_max):
     if not graph[node]:
