@@ -23,5 +23,5 @@ class CardDeck:
 deck = CardDeck()
 for card in deck:
     print(card)
-print(next(deck))  
+print(next(deck)) 
 

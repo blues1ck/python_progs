@@ -1,7 +1,3 @@
-a = [['a', 've', 'cnwj'], ['cnwj', 'venjf', 'veivm']]
-for i in a:
-    if 'cnwj' in i:
-        b = a.index(i)
-        break
-print(b)
-
+import random
+a = random.randint(1, 2)
+print(a)
