@@ -1,0 +1,5 @@
+In mathematics, graph theory is the study of graphs
+mathematical structures used to model 
+pairwise relations between objects.
+Graphs can be used to model many types of relations and processes in physical, biological, social and information systems.
+Within computer science, cybernetics uses graphs to represent networks of communication, data organization, computational devices, the flow of computation, etc.

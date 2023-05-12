@@ -1,0 +1,5 @@
+nI amthematics, rgaph hteory si hte tsudy fo rgaphs
+amthematical tsructures sued ot omdel
+apirwise erlations ebtween bojects.
+rGaphs acn eb sued ot omdel amny ytpes fo erlations nad rpocesses ni hpysical, ibological, oscial nad niformation ysstems.
+iWthin ocmputer csience, ycbernetics sues rgaphs ot erpresent entworks fo ocmmunication, adta roganization, ocmputational edvices, hte lfow fo ocmputation, tec.
