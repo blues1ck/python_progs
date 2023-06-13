@@ -20,8 +20,9 @@ while True:
             min1 = min(s)
             min2 = max(s)
     except:
-        print(f'{min1}-{min2}')
+        print(f'{min1}–{min2}')
         break
+
 
     
 

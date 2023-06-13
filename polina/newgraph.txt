@@ -1,0 +1,6 @@
+5
+a b
+b e
+e l
+a l
+l b
