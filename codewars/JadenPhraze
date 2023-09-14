@@ -1,0 +1,14 @@
+def to_jaden_case(string):
+    lst = list(string.split())
+    res = ''
+    for i in lst:
+        if i is not None:
+            new_i = i[1:]
+            new_i = i[0].capitalize() + new_i
+        res += new_i + ' '
+    res = res[:-1]
+    if res == string:
+        return 'equal'
+    return res
+string = 'nvhejv rehjbehrj fhrfbr'
+print(to_jaden_case(string))
