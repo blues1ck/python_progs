@@ -34,7 +34,7 @@ def graph(x, y, x_name, y_name, function='none'):
     plt.show()
     '''plt.savefig(f'{y_name}({x_name}).png')'''
 
-fileb = "3.3.1б.xlsx"
+fileb = "/home/ilya/Desktop/python_progs/labs/lab3.3.1/3.3.1б.xlsx"
 xlb = pd.ExcelFile(fileb)
 df = xlb.parse("Лист1")
 
@@ -62,7 +62,7 @@ for i in range(len(B)):
     plt.xlabel("B, мТл")
     plt.ylabel("Ia, мА")
     plt.title(f"График зависимости тока на аноде\nот напряженности магнитного поля соляноида\nпри напряжении на аноде {ua[i]}В")
-    # plt.plot(polyline, model(polyline), color = "green", ls = "-")
+    #plt.plot(polyline, model(polyline), color = "green", ls = "-")
     plt.plot(B[i], ia[i], color = "orange", ls = "--")
     plt.show()
 
