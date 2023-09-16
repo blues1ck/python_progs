@@ -54,16 +54,39 @@ ic = list()
 ia = [ia1, ia2, ia3, ia4, ia5]
 ic = [ic1, ic2, ic3, ic4, ic5]
 B = [[round(ic[i][j]*2.8*10**(-2), 6) for j in range(len(ic[i]))] for i in range(len(ic))]
+Bkr = []
 
 for i in range(len(B)):
     model = np.poly1d(np.polyfit(B[i], ia[i], 4))
     polyline = np.linspace(B[i][0], B[i][len(B[i]) - 1], 50)
+    plt.plot(B[i], ia[i], color = "orange", ls = "--")
     plt.scatter(B[i], ia[i], marker="+", color = "blue")
     plt.xlabel("B, мТл")
     plt.ylabel("Ia, мА")
-    plt.title(f"График зависимости тока на аноде\nот напряженности магнитного поля соляноида\nпри напряжении на аноде {ua[i]}В")
+    max_naclon = 0
+    for j in range(len(ia[i])-1):
+        if (ia[i][j+1]-ia[i][j])/(B[i][j+1] - B[i][j]) < max_naclon:
+            ind = j
+            max_naclon = (ia[i][j+1]-ia[i][j])/(B[i][j+1] - B[i][j])
+    plt.title(f"График зависимости тока на аноде\nот напряженности магнитного поля соляноида\
+              \nпри напряжении на аноде {ua[i]}В,\nlinear max k = {round(max_naclon, 6)}")
+    Bkri = (B[i][ind]+B[i][ind+1])/2
     #plt.plot(polyline, model(polyline), color = "green", ls = "-")
-    plt.plot(B[i], ia[i], color = "orange", ls = "--")
-    plt.show()
+    Bkr.append(Bkri)
+    plt.plot([B[i][ind], B[i][ind+1]], [ia[i][ind], ia[i][ind+1]], color = "green")
+    # plt.show()
 
 
+plt.scatter(ua, Bkr, s = 200, marker=".", color = "orange")
+plt.plot(ua, Bkr, color = "green")
+plt.title("Вкр от напряжения на аноде")
+plt.xlabel(f"Ua, В")
+plt.ylabel(f"Вкр, мТл")
+model = np.poly1d(np.polyfit(ua, Bkr, 1))
+polyline = np.linspace(ua[0], ua[len(ua) - 1], 50)
+plt.xlim([60, 120])
+plt.ylim([4.5, 6.5])
+plt.plot(polyline, model(polyline), color = "blue", ls = "-", label = model)
+plt.legend()
+print(model)
+plt.show()
