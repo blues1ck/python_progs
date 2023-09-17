@@ -55,11 +55,11 @@ ia = [ia1, ia2, ia3, ia4, ia5]
 ic = [ic1, ic2, ic3, ic4, ic5]
 B = [[round(ic[i][j]*2.8*10**(-2), 6) for j in range(len(ic[i]))] for i in range(len(ic))]
 Bkr = []
-
+colors = ["r", "c", "m", "y", "b"]
 for i in range(len(B)):
     model = np.poly1d(np.polyfit(B[i], ia[i], 4))
     polyline = np.linspace(B[i][0], B[i][len(B[i]) - 1], 50)
-    plt.plot(B[i], ia[i], color = "orange", ls = "--")
+    plt.plot(B[i], ia[i], color = colors[i], ls = "--", label = f"ua = {ua[i]} B")
     plt.scatter(B[i], ia[i], marker="+", color = "blue")
     plt.xlabel("B, мТл")
     plt.ylabel("Ia, мА")
@@ -74,19 +74,19 @@ for i in range(len(B)):
     #plt.plot(polyline, model(polyline), color = "green", ls = "-")
     Bkr.append(Bkri)
     plt.plot([B[i][ind], B[i][ind+1]], [ia[i][ind], ia[i][ind+1]], color = "green")
-    # plt.show()
+plt.legend()
+plt.show()
 
-
-plt.scatter(ua, Bkr, s = 200, marker=".", color = "orange")
-plt.plot(ua, Bkr, color = "green")
-plt.title("Вкр от напряжения на аноде")
+Bkr2 = [i*i for i in Bkr]
+plt.scatter(ua, Bkr2, s = 200, marker=".", color = "orange")
+plt.plot(ua, Bkr2, color = "green")
+plt.title("Вкр^2 от напряжения на аноде")
 plt.xlabel(f"Ua, В")
-plt.ylabel(f"Вкр, мТл")
-model = np.poly1d(np.polyfit(ua, Bkr, 1))
+plt.ylabel(f"Вкр^2, мТл^2")
+model = np.poly1d(np.polyfit(ua, Bkr2, 1))
 polyline = np.linspace(ua[0], ua[len(ua) - 1], 50)
 plt.xlim([60, 120])
-plt.ylim([4.5, 6.5])
+#plt.ylim([4.5, 6.5])
 plt.plot(polyline, model(polyline), color = "blue", ls = "-", label = model)
 plt.legend()
-print(model)
 plt.show()
